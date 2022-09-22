@@ -1,0 +1,191 @@
+import discord
+from discord.ext import commands
+from functions import *
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+description = '''
+A Discord bot for my Splatoon 3 server.
+It can tell you the current and next stages of regular, bankara, and coop games, 
+or list the next N games on the schedule of regular, bankara, and coop games.
+'''
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='?', description=description, intents=intents)
+
+
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user} (ID: {bot.user.id})')
+    print('------')
+
+
+@bot.command(description='Examples: ?turf | ?turf 3')
+async def turf(ctx, n = 2):
+    if n < 1:
+        messageVar = '`N` requested is too small!'
+        await ctx.reply(content = messageVar)
+        return
+    data = get_schedule('regular', 'schedule')
+    if data is None:
+        await ctx.reply('Failed in getting the data!')
+        return
+    elif n > len(data):
+        await ctx.reply('`N` requested is too large!')
+        return
+    messageVar = f'''
+    **⤋⤋⤋ TURF WAR SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    for i in range(n):
+        embedVar = embed_content(data[i])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+
+@bot.command(description='Examples: ?bankara open | ?bankara open 3 | ?bankara challenge 3')
+async def bankara(ctx, format = None, n = 2):
+    if n < 1:
+        messageVar = '`N` requested is too small!'
+        await ctx.reply(content = messageVar)
+        return
+    if format is None:
+        messageVar = '**Please specify a BANKARA FORMAT!**'
+        await ctx.reply(content = messageVar)
+        return
+    elif format == "open":
+        data = get_schedule('bankara-open', 'schedule')
+        if data is None:
+            await ctx.reply('Failed in getting the data!')
+            return
+        elif n > len(data):
+            await ctx.reply('`N` requested is too large!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ BANKARA OPEN SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        for i in range(n):
+            embedVar = embed_content(data[i])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+    elif format == "challenge":
+        data = get_schedule('bankara-challenge', 'schedule')
+        if data is None:
+            await ctx.reply('Failed in getting the data!')
+            return
+        elif n > len(data):
+            await ctx.reply('`N` requested is too large!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ BANKARA CHALLENGE SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        for i in range(n):
+            embedVar = embed_content(data[i])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+    else:
+        messageVar = '**wrong BANKARA FORMAT!**'
+        await ctx.reply(content = messageVar)
+        return
+
+@bot.command(description='Examples: ?salmonrun | ?salmonrun 3')
+async def salmonrun(ctx, n = 2):
+    if n < 1:
+        messageVar = '`N` requested is too small!'
+        await ctx.reply(content = messageVar)
+        return
+    data = get_schedule('coop-grouping-regular', 'schedule')
+    if data is None:
+        await ctx.reply('Failed in getting the data!')
+        return
+    elif n > len(data):
+        await ctx.reply('`N` requested is too large!')
+        return
+    messageVar = f'''
+    **⤋⤋⤋ SALMON RUN SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    for i in range(n):
+        embedVar = embed_content(data[i])
+        await ctx.send(embed = embedVar)
+
+@bot.command(description='Example: ?now')
+async def now(ctx):
+    data = [None] * 4
+    data[0] = get_schedule('regular', 'now')
+    data[1] = get_schedule('bankara-open', 'now')
+    data[2] = get_schedule('bankara-challenge', 'now')
+    data[3] = get_schedule('coop-grouping-regular', 'now')
+    if None in data:
+        await ctx.reply('Failed in getting the data!')
+        return
+    messageVar = f'''
+    **⤋⤋⤋ CURRENT TURF WAR STAGES ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[0][0])
+    await ctx.send(file = embedVar[0], embed = embedVar[1])
+    messageVar = f'''
+    **⤋⤋⤋ CURRENT BANKARA OPEN STAGES ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[1][0])
+    await ctx.send(file = embedVar[0], embed = embedVar[1])
+    messageVar = f'''
+    **⤋⤋⤋ CURRENT BANKARA CHALLENGE STAGES ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[2][0])
+    await ctx.send(file = embedVar[0], embed = embedVar[1])
+    messageVar = f'''
+    **⤋⤋⤋ CURRENT SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[3][0])
+    await ctx.send(embed = embedVar)
+    
+@bot.command(description='Example: ?next')
+async def next(ctx):
+    data = [None] * 4
+    data[0] = get_schedule('regular', 'next')
+    data[1] = get_schedule('bankara-open', 'next')
+    data[2] = get_schedule('bankara-challenge', 'next')
+    data[3] = get_schedule('coop-grouping-regular', 'next')
+    if None in data:
+        await ctx.reply('Failed in getting the data!')
+        return
+    messageVar = f'''
+    **⤋⤋⤋ NEXT TURF WAR STAGES ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[0][0])
+    await ctx.send(file = embedVar[0], embed = embedVar[1])
+    messageVar = f'''
+    **⤋⤋⤋ NEXT BANKARA OPEN STAGES ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[1][0])
+    await ctx.send(file = embedVar[0], embed = embedVar[1])
+    messageVar = f'''
+    **⤋⤋⤋ NEXT BANKARA CHALLENGE STAGES ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[2][0])
+    await ctx.send(file = embedVar[0], embed = embedVar[1])
+    messageVar = f'''
+    **⤋⤋⤋ NEXT SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    embedVar = embed_content(data[3][0])
+    await ctx.send(embed = embedVar)
+
+
+@bot.command()
+async def tt(ctx):
+    pass
+
+
+
+bot.run(os.getenv('BOT_TOKEN'))
