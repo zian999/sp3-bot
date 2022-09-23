@@ -22,6 +22,6 @@ This bot uses the [Spla3 API](https://spla3.yuu26.com/). Thanks to its author!
 
 1. The author of the Spla3 API recently added support for the SplatFest informaion. I am going to add that to my bot too.
 
-2. Currently, the bot is using the stage images from Discord CDN. Recently, the author of Spla3 API added support for the urls of stage and weapon images. I am going to use those urls in my bot.
+2. Currently, the bot is using the stage images from Discord CDN. Recently, the author of Spla3 API included the urls of stage and weapon images in the API. I am going to use those urls in my bot.
 
 3. Support for other language(s).
