@@ -21,28 +21,26 @@ def get_schedule(p1, p2):
         data = None
         return data
 
-# def get_now(p1):
-#     return get_schedule(p1, 'now')
-
-# def get_next(p1):
-#     return get_schedule(p1, 'next')
-
 def handle(entry):
     st = datetime.strptime(entry['start_time'], "%Y-%m-%dT%H:%M:%S%z")
     et = datetime.strptime(entry['end_time'], "%Y-%m-%dT%H:%M:%S%z")
-    if 'stages' in entry:
-        rule_name = entry['rule']['name']
-        stages = [s['name'] for s in entry['stages']]
-        return [[st, et], rule_name, stages]
     if 'weapons' in entry:
         weapons = [w['name'] for w in entry['weapons']]
         stage = entry['stage']['name']
         return [[st, et], stage, weapons]
+    if 'stages' in entry:
+        rule_name = entry['rule']['name']
+        stages = [s['name'] for s in entry['stages']]
+        return [[st, et], rule_name, stages]
 
 def timediff(earlier_time, later_time):
     s = str(later_time - earlier_time).split(':')
-    if len(s[0]) > 3:
+    if s[0].find(' days, ') > 0:
         dayhour = s[0].split(' days, ')
+        s.insert(0, dayhour[0])
+        s[1] = dayhour[1]
+    elif s[0].find(' day, ') > 0:
+        dayhour = s[0].split(' day, ')
         s.insert(0, dayhour[0])
         s[1] = dayhour[1]
     else:

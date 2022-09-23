@@ -188,4 +188,4 @@ async def tt(ctx):
 
 
 
-bot.run(os.getenv('BOT_TOKEN'))
+bot.run(os.getenv('TESTBOT_TOKEN'))
