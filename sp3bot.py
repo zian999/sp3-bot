@@ -37,6 +37,9 @@ async def turf(ctx, n = 2):
     elif n > len(data):
         await ctx.reply('`N` requested is too large!')
         return
+    elif data[0]['is_fest']:
+        await ctx.reply('SplatFest is going on! GO!')
+        return
     messageVar = f'''
     **⤋⤋⤋ TURF WAR SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
     '''
@@ -52,7 +55,7 @@ async def bankara(ctx, format = None, n = 2):
         await ctx.reply(content = messageVar)
         return
     if format is None:
-        messageVar = '**Please specify a BANKARA FORMAT!**'
+        messageVar = 'Please specify a BANKARA FORMAT!'
         await ctx.reply(content = messageVar)
         return
     elif format == "open":
@@ -62,6 +65,9 @@ async def bankara(ctx, format = None, n = 2):
             return
         elif n > len(data):
             await ctx.reply('`N` requested is too large!')
+            return
+        elif data[0]['is_fest']:
+            await ctx.reply('SplatFest is going on! GO!')
             return
         messageVar = f'''
         **⤋⤋⤋ BANKARA OPEN SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
@@ -78,6 +84,9 @@ async def bankara(ctx, format = None, n = 2):
         elif n > len(data):
             await ctx.reply('`N` requested is too large!')
             return
+        elif data[0]['is_fest']:
+            await ctx.reply('SplatFest is going on! GO!')
+            return
         messageVar = f'''
         **⤋⤋⤋ BANKARA CHALLENGE SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
         '''
@@ -86,7 +95,7 @@ async def bankara(ctx, format = None, n = 2):
             embedVar = embed_content(data[i])
             await ctx.send(file = embedVar[0], embed = embedVar[1])
     else:
-        messageVar = '**wrong BANKARA FORMAT!**'
+        messageVar = 'Wrong BANKARA FORMAT!'
         await ctx.reply(content = messageVar)
         return
 
@@ -120,6 +129,9 @@ async def now(ctx):
     data[3] = get_schedule('coop-grouping-regular', 'now')
     if None in data:
         await ctx.reply('Failed in getting the data!')
+        return
+    elif data[0][0]['is_fest']:
+        await ctx.reply('SplatFest is going on! GO!')
         return
     messageVar = f'''
     **⤋⤋⤋ CURRENT TURF WAR STAGES ⤋⤋⤋**
@@ -156,6 +168,9 @@ async def next(ctx):
     if None in data:
         await ctx.reply('Failed in getting the data!')
         return
+    elif data[0][0]['is_fest']:
+        await ctx.reply('SplatFest is going on! GO!')
+        return
     messageVar = f'''
     **⤋⤋⤋ NEXT TURF WAR STAGES ⤋⤋⤋**
     '''
@@ -188,4 +203,4 @@ async def tt(ctx):
 
 
 
-bot.run(os.getenv('TESTBOT_TOKEN'))
+bot.run(os.getenv('BOT_TOKEN'))
