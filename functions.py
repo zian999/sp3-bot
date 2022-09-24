@@ -62,20 +62,42 @@ def embed_content(entry):
             title = f"Starts in {tdelta[0]} days, {tdelta[1]} hours, {tdelta[2]} mins."
         )
     if 'stages' in entry:
-        stage_id1 = stage_ids[data[2][0]]
-        stage_id2 = stage_ids[data[2][1]]
-        embed.add_field(
-            name = "~ RULE ~",
-            value = rule_CN_names[rule_ids[data[1]]],
-            inline = False
-        )
-        embed.add_field(
-            name = "~ STAGES ~",
-            value = stage_CN_names[stage_id1] + '\n' + stage_CN_names[stage_id2],
-            inline = False
-        )
-        file = discord.File(embed_stage_image(stage_id1, stage_id2), filename = "o.png")
-        embed.set_image(url="attachment://o.png")
+        if entry['is_tricolor']:
+            stage_id1 = stage_ids[data[2][0]]
+            stage_id2 = stage_ids[data[2][1]]
+            tc_stage_id = stage_ids[entry['tricolor_stage']]
+            embed.add_field(
+                name = "~ RULE ~",
+                value = rule_CN_names[rule_ids[data[1]]],
+                inline = False
+            )
+            embed.add_field(
+                name = "~ STAGES ~",
+                value = stage_CN_names[stage_id1] + '\n' + stage_CN_names[stage_id2],
+                inline = False
+            )
+            embed.add_field(
+                name = "~ TRICOLOR STAGE ~",
+                value = stage_CN_names[tc_stage_id],
+                inline = False
+            )
+            file = discord.File(embed_tc_stage_image(stage_id1, stage_id2), filename = "o.png")
+            embed.set_image(url="attachment://o.png")
+        else:
+            stage_id1 = stage_ids[data[2][0]]
+            stage_id2 = stage_ids[data[2][1]]
+            embed.add_field(
+                name = "~ RULE ~",
+                value = rule_CN_names[rule_ids[data[1]]],
+                inline = False
+            )
+            embed.add_field(
+                name = "~ STAGES ~",
+                value = stage_CN_names[stage_id1] + '\n' + stage_CN_names[stage_id2],
+                inline = False
+            )
+            file = discord.File(embed_stage_image(stage_id1, stage_id2), filename = "o.png")
+            embed.set_image(url="attachment://o.png")
         return [file, embed]
     if 'weapons' in entry:
         weapon_id1 = weapon_ids[data[2][0]]
@@ -107,6 +129,13 @@ def create_image(url1, url2):
     img = merge_image(img1, img2)
     return img
 
+def create_tc_image(url1, url2, url3):
+    img1 = read_image(url1)
+    img2 = read_image(url2)
+    img3 = read_image(url3)
+    img = merge_image(merge_image(img1, img2), img3)
+    return img
+
 def read_image(url):
     response = requests.get(url)
     img = Image.open(BytesIO(response.content))
@@ -127,3 +156,9 @@ def embed_stage_image(id1, id2):
     b.seek(0)
     return b
 
+def embed_tc_stage_image(id1, id2, tcid):
+    im = create_tc_image(stage_images[id1], stage_images[id2], stage_images[tcid])
+    b = BytesIO()
+    im.save(b, "PNG")
+    b.seek(0)
+    return b

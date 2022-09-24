@@ -209,6 +209,9 @@ async def fest(ctx, n = 2):
     elif n > len(data):
         await ctx.reply('`N` requested is too large!')
         return
+    elif data[0]['is_fest'] == False:
+        await ctx.reply('SplatFest is not going on...')
+        return
     messageVar = f'''
     **⤋⤋⤋ 🎆SPLATFEST🎆 SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
     '''
@@ -217,9 +220,7 @@ async def fest(ctx, n = 2):
         embedVar = embed_content(data[i])
         await ctx.send(file = embedVar[0], embed = embedVar[1])
 
-@bot.command()
-async def tt(ctx):
-    pass
+
 
 
 
