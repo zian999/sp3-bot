@@ -18,6 +18,8 @@ This bot uses the [Spla3 API](https://spla3.yuu26.com/). Thanks to its author!
 
 6. `?salmonrun [n]` - List the current and the next `n-1` Salmon Run stages on the schedule, as well as the information of weapons. The default value for `n` is 2.
 
+7. `?fest [n]` - List the current and the next `n-1` SplatFest stages on the schedule. The default value for `n` is 2.
+
 ## ToDo
 
 1. The author of the Spla3 API recently added support for the SplatFest informaion. I am going to add that to my bot too.
