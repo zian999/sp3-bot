@@ -113,11 +113,11 @@ async def salmonrun(ctx, n = 2):
         await ctx.reply('`N` requested is too large!')
         return
     messageVar = f'''
-    **⤋⤋⤋ SALMON RUN SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
+    **⤋⤋⤋ 🈺SALMON RUN SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
     '''
     await ctx.reply(content = messageVar)
     for i in range(n):
-        embedVar = embed_content(data[i])
+        embedVar = embed_content_coop(data[i])
         await ctx.send(embed = embedVar)
 
 @bot.command(description='Example: ?now')
@@ -152,10 +152,10 @@ async def now(ctx):
     embedVar = embed_content(data[2][0])
     await ctx.send(file = embedVar[0], embed = embedVar[1])
     messageVar = f'''
-    **⤋⤋⤋ CURRENT SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+    **⤋⤋⤋ CURRENT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
     '''
     await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[3][0])
+    embedVar = embed_content_coop(data[3][0])
     await ctx.send(embed = embedVar)
     
 @bot.command(description='Example: ?next')
@@ -190,10 +190,10 @@ async def next(ctx):
     embedVar = embed_content(data[2][0])
     await ctx.send(file = embedVar[0], embed = embedVar[1])
     messageVar = f'''
-    **⤋⤋⤋ NEXT SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+    **⤋⤋⤋ NEXT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
     '''
     await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[3][0])
+    embedVar = embed_content_coop(data[3][0])
     await ctx.send(embed = embedVar)
 
 @bot.command(description='Examples: ?fest | ?fest 3')
@@ -224,4 +224,4 @@ async def fest(ctx, n = 2):
 
 
 
-bot.run(os.getenv('BOT_TOKEN'))
+bot.run(os.getenv('TESTBOT_TOKEN'))
