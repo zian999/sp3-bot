@@ -38,7 +38,7 @@ async def turf(ctx, n = 2):
         await ctx.reply('`N` requested is too large!')
         return
     elif data[0]['is_fest']:
-        await ctx.reply('SplatFest is going on! GO!')
+        await ctx.reply('🎆SplatFest🎆 is going on! Use `?fest`')
         return
     messageVar = f'''
     **⤋⤋⤋ TURF WAR SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
@@ -67,7 +67,7 @@ async def bankara(ctx, format = None, n = 2):
             await ctx.reply('`N` requested is too large!')
             return
         elif data[0]['is_fest']:
-            await ctx.reply('SplatFest is going on! GO!')
+            await ctx.reply('🎆SplatFest🎆 is going on! Use `?fest`')
             return
         messageVar = f'''
         **⤋⤋⤋ BANKARA OPEN SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
@@ -85,7 +85,7 @@ async def bankara(ctx, format = None, n = 2):
             await ctx.reply('`N` requested is too large!')
             return
         elif data[0]['is_fest']:
-            await ctx.reply('SplatFest is going on! GO!')
+            await ctx.reply('🎆SplatFest🎆 is going on! GO!')
             return
         messageVar = f'''
         **⤋⤋⤋ BANKARA CHALLENGE SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
@@ -131,7 +131,7 @@ async def now(ctx):
         await ctx.reply('Failed in getting the data!')
         return
     elif data[0][0]['is_fest']:
-        await ctx.reply('SplatFest is going on! GO!')
+        await ctx.reply('🎆SplatFest🎆 is going on! Use `?fest`')
         return
     messageVar = f'''
     **⤋⤋⤋ CURRENT TURF WAR STAGES ⤋⤋⤋**
@@ -169,7 +169,7 @@ async def next(ctx):
         await ctx.reply('Failed in getting the data!')
         return
     elif data[0][0]['is_fest']:
-        await ctx.reply('SplatFest is going on! GO!')
+        await ctx.reply('🎆SplatFest🎆 is going on! Use `?fest`')
         return
     messageVar = f'''
     **⤋⤋⤋ NEXT TURF WAR STAGES ⤋⤋⤋**
@@ -196,6 +196,26 @@ async def next(ctx):
     embedVar = embed_content(data[3][0])
     await ctx.send(embed = embedVar)
 
+@bot.command(description='Examples: ?fest | ?fest 3')
+async def fest(ctx, n = 2):
+    if n < 1:
+        messageVar = '`N` requested is too small!'
+        await ctx.reply(content = messageVar)
+        return
+    data = get_schedule('fest', 'schedule')
+    if data is None:
+        await ctx.reply('Failed in getting the data!')
+        return
+    elif n > len(data):
+        await ctx.reply('`N` requested is too large!')
+        return
+    messageVar = f'''
+    **⤋⤋⤋ 🎆SPLATFEST🎆 SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
+    '''
+    await ctx.reply(content = messageVar)
+    for i in range(n):
+        embedVar = embed_content(data[i])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
 
 @bot.command()
 async def tt(ctx):
