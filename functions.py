@@ -53,7 +53,7 @@ def embed_content(entry):
         embed = discord.Embed(
             title = f"Starts in {tdelta[0]} days, {tdelta[1]} hours, {tdelta[2]} mins."
         )
-    if entry['is_tricolor']:
+    if ('is_tricolor' in entry) and entry['is_tricolor']:
         stage_id1 = stage_ids[entry['stages'][0]['name']]
         stage_id2 = stage_ids[entry['stages'][1]['name']]
         tc_stage_id = stage_ids[entry['tricolor_stage']]

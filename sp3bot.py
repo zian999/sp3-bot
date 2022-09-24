@@ -120,81 +120,194 @@ async def salmonrun(ctx, n = 2):
         embedVar = embed_content_coop(data[i])
         await ctx.send(embed = embedVar)
 
+
 @bot.command(description='Example: ?now')
-async def now(ctx):
-    data = [None] * 4
+async def now(ctx, format = None):
+    data = [None] * 5
     data[0] = get_schedule('regular', 'now')
     data[1] = get_schedule('bankara-open', 'now')
     data[2] = get_schedule('bankara-challenge', 'now')
     data[3] = get_schedule('coop-grouping-regular', 'now')
+    data[4] = get_schedule('fest', 'now')
     if None in data:
         await ctx.reply('Failed in getting the data!')
         return
-    elif data[0][0]['is_fest']:
-        await ctx.reply('🎆SplatFest🎆 is going on! Use `?fest`')
-        return
-    messageVar = f'''
-    **⤋⤋⤋ CURRENT TURF WAR STAGES ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[0][0])
-    await ctx.send(file = embedVar[0], embed = embedVar[1])
-    messageVar = f'''
-    **⤋⤋⤋ CURRENT BANKARA OPEN STAGES ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[1][0])
-    await ctx.send(file = embedVar[0], embed = embedVar[1])
-    messageVar = f'''
-    **⤋⤋⤋ CURRENT BANKARA CHALLENGE STAGES ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[2][0])
-    await ctx.send(file = embedVar[0], embed = embedVar[1])
-    messageVar = f'''
-    **⤋⤋⤋ CURRENT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content_coop(data[3][0])
-    await ctx.send(embed = embedVar)
-    
+    if format is None:
+        if data[0][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is going on!')
+            messageVar = f'''
+            **⤋⤋⤋ CURRENT 🎆SPLATFEST🎆 STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[4][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+        else:
+            messageVar = f'''
+            **⤋⤋⤋ CURRENT TURF WAR STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[0][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+            messageVar = f'''
+            **⤋⤋⤋ CURRENT BANKARA OPEN STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[1][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+            messageVar = f'''
+            **⤋⤋⤋ CURRENT BANKARA CHALLENGE STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[2][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+            messageVar = f'''
+            **⤋⤋⤋ CURRENT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content_coop(data[3][0])
+            await ctx.send(embed = embedVar)
+    if format == 'turf':
+        if data[0][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is going on! No regular Truf War!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ CURRENT TURF WAR STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[0][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+    if format == 'open':
+        if data[1][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is going on! No regular Bankara!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ CURRENT BANKARA OPEN STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[1][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+    if format == 'challenge':
+        if data[2][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is  going on! No regular Bankara!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ CURRENT BANKARA CHALLENGE STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[2][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+    if format == 'salmonrun':
+        messageVar = f'''
+        **⤋⤋⤋ CURRENT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content_coop(data[3][0])
+        await ctx.send(embed = embedVar)
+    if format == 'fest':
+        if not(data[4][0]['is_fest']):
+            await ctx.reply('🎆SplatFest🎆 is not going on...')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ CURRENT 🎆SPLATFEST🎆 STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[4][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+
+
 @bot.command(description='Example: ?next')
-async def next(ctx):
-    data = [None] * 4
+async def next(ctx, format = None):
+    data = [None] * 5
     data[0] = get_schedule('regular', 'next')
     data[1] = get_schedule('bankara-open', 'next')
     data[2] = get_schedule('bankara-challenge', 'next')
     data[3] = get_schedule('coop-grouping-regular', 'next')
+    data[4] = get_schedule('fest', 'next')
     if None in data:
         await ctx.reply('Failed in getting the data!')
         return
-    elif data[0][0]['is_fest']:
-        await ctx.reply('🎆SplatFest🎆 is going on! Use `?fest`')
-        return
-    messageVar = f'''
-    **⤋⤋⤋ NEXT TURF WAR STAGES ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[0][0])
-    await ctx.send(file = embedVar[0], embed = embedVar[1])
-    messageVar = f'''
-    **⤋⤋⤋ NEXT BANKARA OPEN STAGES ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[1][0])
-    await ctx.send(file = embedVar[0], embed = embedVar[1])
-    messageVar = f'''
-    **⤋⤋⤋ NEXT BANKARA CHALLENGE STAGES ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content(data[2][0])
-    await ctx.send(file = embedVar[0], embed = embedVar[1])
-    messageVar = f'''
-    **⤋⤋⤋ NEXT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
-    '''
-    await ctx.reply(content = messageVar)
-    embedVar = embed_content_coop(data[3][0])
-    await ctx.send(embed = embedVar)
+    if format is None:
+        if data[0][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is going on!')
+            messageVar = f'''
+            **⤋⤋⤋ NEXT 🎆SPLATFEST🎆 STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[4][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+        else:
+            messageVar = f'''
+            **⤋⤋⤋ NEXT TURF WAR STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[0][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+            messageVar = f'''
+            **⤋⤋⤋ NEXT BANKARA OPEN STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[1][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+            messageVar = f'''
+            **⤋⤋⤋ NEXT BANKARA CHALLENGE STAGES ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content(data[2][0])
+            await ctx.send(file = embedVar[0], embed = embedVar[1])
+            messageVar = f'''
+            **⤋⤋⤋ NEXT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+            '''
+            await ctx.reply(content = messageVar)
+            embedVar = embed_content_coop(data[3][0])
+            await ctx.send(embed = embedVar)
+    if format == 'turf':
+        if data[0][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is going on! No regular Truf War!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ NEXT TURF WAR STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[0][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+    if format == 'open':
+        if data[1][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is going on! No regular Bankara!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ NEXT BANKARA OPEN STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[1][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+    if format == 'challenge':
+        if data[2][0]['is_fest']:
+            await ctx.reply('🎆SplatFest🎆 is  going on! No regular Bankara!')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ NEXT BANKARA CHALLENGE STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[2][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+    if format == 'salmonrun':
+        messageVar = f'''
+        **⤋⤋⤋ NEXT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content_coop(data[3][0])
+        await ctx.send(embed = embedVar)
+    if format == 'fest':
+        if not(data[4][0]['is_fest']):
+            await ctx.reply('🎆SplatFest🎆 is not going on...')
+            return
+        messageVar = f'''
+        **⤋⤋⤋ NEXT 🎆SPLATFEST🎆 STAGES ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content(data[4][0])
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
+
 
 @bot.command(description='Examples: ?fest | ?fest 3')
 async def fest(ctx, n = 2):
@@ -210,7 +323,7 @@ async def fest(ctx, n = 2):
         await ctx.reply('`N` requested is too large!')
         return
     elif data[0]['is_fest'] == False:
-        await ctx.reply('SplatFest is not going on...')
+        await ctx.reply('🎆SplatFest🎆 is not going on...')
         return
     messageVar = f'''
     **⤋⤋⤋ 🎆SPLATFEST🎆 SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
