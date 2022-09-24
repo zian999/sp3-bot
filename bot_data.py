@@ -264,3 +264,10 @@ weapon_EN_names = {
     54: "Splatana Stamper",
     55: "Splatana Wiper"
 }
+
+sp3db_id = {
+    "刺冠概率": 1
+}
+sp3db = {
+    "刺冠概率": "https://cdn.discordapp.com/attachments/1016112433200369664/1023029608645406720/unknown.png"
+}

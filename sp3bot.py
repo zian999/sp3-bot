@@ -113,7 +113,7 @@ async def salmonrun(ctx, n = 2):
         await ctx.reply('`N` requested is too large!')
         return
     messageVar = f'''
-    **⤋⤋⤋ 🈺SALMON RUN SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
+    **⤋⤋⤋ 🈺SALMON RUN🈺 SCHEDULE (REQUESTED N = {n}) ⤋⤋⤋**
     '''
     await ctx.reply(content = messageVar)
     for i in range(n):
@@ -121,7 +121,7 @@ async def salmonrun(ctx, n = 2):
         await ctx.send(embed = embedVar)
 
 
-@bot.command(description='Example: ?now')
+@bot.command(description='Usage: ?now [turf|open|challenge|salmonrun|fest]')
 async def now(ctx, format = None):
     data = [None] * 5
     data[0] = get_schedule('regular', 'now')
@@ -134,7 +134,6 @@ async def now(ctx, format = None):
         return
     if format is None:
         if data[0][0]['is_fest']:
-            await ctx.reply('🎆SplatFest🎆 is going on!')
             messageVar = f'''
             **⤋⤋⤋ CURRENT 🎆SPLATFEST🎆 STAGES ⤋⤋⤋**
             '''
@@ -160,12 +159,12 @@ async def now(ctx, format = None):
             await ctx.reply(content = messageVar)
             embedVar = embed_content(data[2][0])
             await ctx.send(file = embedVar[0], embed = embedVar[1])
-            messageVar = f'''
-            **⤋⤋⤋ CURRENT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
-            '''
-            await ctx.reply(content = messageVar)
-            embedVar = embed_content_coop(data[3][0])
-            await ctx.send(embed = embedVar)
+        messageVar = f'''
+        **⤋⤋⤋ CURRENT 🈺SALMON RUN🈺 STAGE AND WEAPONS ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content_coop(data[3][0])
+        await ctx.send(embed = embedVar)
     if format == 'turf':
         if data[0][0]['is_fest']:
             await ctx.reply('🎆SplatFest🎆 is going on! No regular Truf War!')
@@ -198,7 +197,7 @@ async def now(ctx, format = None):
         await ctx.send(file = embedVar[0], embed = embedVar[1])
     if format == 'salmonrun':
         messageVar = f'''
-        **⤋⤋⤋ CURRENT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+        **⤋⤋⤋ CURRENT 🈺SALMON RUN🈺 STAGE AND WEAPONS ⤋⤋⤋**
         '''
         await ctx.reply(content = messageVar)
         embedVar = embed_content_coop(data[3][0])
@@ -215,7 +214,7 @@ async def now(ctx, format = None):
         await ctx.send(file = embedVar[0], embed = embedVar[1])
 
 
-@bot.command(description='Example: ?next')
+@bot.command(description='Usage: ?next [turf|open|challenge|salmonrun|fest]')
 async def next(ctx, format = None):
     data = [None] * 5
     data[0] = get_schedule('regular', 'next')
@@ -228,7 +227,6 @@ async def next(ctx, format = None):
         return
     if format is None:
         if data[0][0]['is_fest']:
-            await ctx.reply('🎆SplatFest🎆 is going on!')
             messageVar = f'''
             **⤋⤋⤋ NEXT 🎆SPLATFEST🎆 STAGES ⤋⤋⤋**
             '''
@@ -254,12 +252,12 @@ async def next(ctx, format = None):
             await ctx.reply(content = messageVar)
             embedVar = embed_content(data[2][0])
             await ctx.send(file = embedVar[0], embed = embedVar[1])
-            messageVar = f'''
-            **⤋⤋⤋ NEXT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
-            '''
-            await ctx.reply(content = messageVar)
-            embedVar = embed_content_coop(data[3][0])
-            await ctx.send(embed = embedVar)
+        messageVar = f'''
+        **⤋⤋⤋ NEXT 🈺SALMON RUN🈺 STAGE AND WEAPONS ⤋⤋⤋**
+        '''
+        await ctx.reply(content = messageVar)
+        embedVar = embed_content_coop(data[3][0])
+        await ctx.send(embed = embedVar)
     if format == 'turf':
         if data[0][0]['is_fest']:
             await ctx.reply('🎆SplatFest🎆 is going on! No regular Truf War!')
@@ -292,7 +290,7 @@ async def next(ctx, format = None):
         await ctx.send(file = embedVar[0], embed = embedVar[1])
     if format == 'salmonrun':
         messageVar = f'''
-        **⤋⤋⤋ NEXT 🈺SALMON RUN STAGE AND WEAPONS ⤋⤋⤋**
+        **⤋⤋⤋ NEXT 🈺SALMON RUN🈺 STAGE AND WEAPONS ⤋⤋⤋**
         '''
         await ctx.reply(content = messageVar)
         embedVar = embed_content_coop(data[3][0])
@@ -333,8 +331,10 @@ async def fest(ctx, n = 2):
         embedVar = embed_content(data[i])
         await ctx.send(file = embedVar[0], embed = embedVar[1])
 
+@bot.command(description='')
+async def archive(ctx, n = None):
+    pass
 
 
 
-
-bot.run(os.getenv('TESTBOT_TOKEN'))
+bot.run(os.getenv('BOT_TOKEN'))
