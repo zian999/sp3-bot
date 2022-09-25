@@ -16,55 +16,22 @@ stage_ids = {
     'シェケナダム': 903
 }
 
-stage_CN_names = {
-    1: '温泉花大峡谷',
-    2: '鳗鲶区',
-    3: '烟管鱼市场',
-    4: '竹蛏疏洪道',
-    6: '鱼肉碎金属',
-    10: '真鲭跨海大桥',
-    11: '金眼鲷美术馆',
-    12: '鬼头刀SPA度假区',
-    13: '海女美术大学',
-    14: '鲟鱼造船厂',
-    15: '座头购物中心',
-    16: '醋饭海洋世界',
-    901: '新卷堡',
-    902: '麦年海洋发电所',
-    903: '鲑坝'
-}
-
-stage_EN_names = {
-    1: 'Scorch Gorge',
-    2: 'Eeltail Alley',
-    3: 'Hagglefish Market',
-    4: 'Undertow Spillway',
-    6: 'Mincemeat Metalworks',
-    10: 'Hammerhead Bridge',
-    11: "Museum d'Alfonsino",
-    12: 'Mahi-Mahi Resort',
-    13: 'Inkblot Art Academy',
-    14: 'Sturgeon Shipyard',
-    15: 'MakoMart',
-    16: 'Wahoo World'
-}
-
-stage_images = {
-    1: "https://cdn.discordapp.com/attachments/1022357979120541758/1022527652600496218/01-ScorchGorge.png",
-    2: "https://cdn.discordapp.com/attachments/1022357979120541758/1022528968529805372/02-EeltailAlley.png",
-    3: "https://cdn.discordapp.com/attachments/1022357979120541758/1022531668814340177/03-HagglefishMarket.png",
-    4: "https://cdn.discordapp.com/attachments/1022357979120541758/1022531792646967346/04-UndertowSpillway.png",
-    6: "https://cdn.discordapp.com/attachments/1022357979120541758/1022531877707464834/06-MincemeatMetalworks.png",
-    10: "https://cdn.discordapp.com/attachments/1022357979120541758/1022531954773598228/10-HammerheadBridge.png",
-    11: "https://cdn.discordapp.com/attachments/1022357979120541758/1022569634731405342/11-MuseumdAlfonsino.png",
-    12: "https://cdn.discordapp.com/attachments/1022357979120541758/1022569716398698506/12-MahiMahiResort.png",
-    13: "https://cdn.discordapp.com/attachments/1022357979120541758/1022532105378463885/13-InkblotArtAcademy.png",
-    14: "https://cdn.discordapp.com/attachments/1022357979120541758/1022532183077953566/14-SturgeonShipyard.png",
-    15: "https://cdn.discordapp.com/attachments/1022357979120541758/1022532281983828029/15-MakoMart.png",
-    16: "https://cdn.discordapp.com/attachments/1022357979120541758/1022532352360058958/16-WahooWorld.png",
-    901: "https://cdn.discordapp.com/attachments/1022357979120541758/1022598607477678121/901-SockeyeStation.png",
-    902: "https://cdn.discordapp.com/attachments/1022357979120541758/1022598705565675600/902-GoneFissionHydroplant.png",
-    903: "https://cdn.discordapp.com/attachments/1022357979120541758/1022598803917914113/903-SpawningGrounds.png"
+stage_names = {
+    1: {'CN': '温泉花大峡谷', 'EN': 'Scorch Gorge', 'JP': 'ユノハナ大渓谷'},
+    2: {'CN': '鳗鲶区', 'EN': 'Eeltail Alley', 'JP': 'ゴンズイ地区'},
+    3: {'CN': '烟管鱼市场', 'EN': 'Hagglefish Market', 'JP': 'ヤガラ市場'},
+    4: {'CN': '竹蛏疏洪道', 'EN': 'Undertow Spillway', 'JP': 'マテガイ放水路'},
+    6: {'CN': '鱼肉碎金属', 'EN': 'Mincemeat Metalworks', 'JP': 'ナメロウ金属'},
+    10: {'CN': '真鲭跨海大桥', 'EN': 'Hammerhead Bridge', 'JP': 'マサバ海峡大橋'},
+    11: {'CN': '金眼鲷美术馆', 'EN': "Museum d'Alfonsino", 'JP': 'キンメダイ美術館'},
+    12: {'CN': '鬼头刀SPA度假区', 'EN': 'Mahi-Mahi Resort', 'JP': 'マヒマヒリゾート＆スパ'},
+    13: {'CN': '海女美术大学', 'EN': 'Inkblot Art Academy', 'JP': '海女美術大学'},
+    14: {'CN': '鲟鱼造船厂', 'EN': 'Sturgeon Shipyard', 'JP': 'チョウザメ造船'},
+    15: {'CN': '座头购物中心', 'EN': 'MakoMart', 'JP': 'ザトウマーケット'},
+    16: {'CN': '醋饭海洋世界', 'EN': 'Wahoo World', 'JP': 'スメーシーワールド'},
+    901: {'CN': '新卷堡', 'EN': 'Sockeye Station', 'JP': 'アラマキ砦'},
+    902: {'CN': '麦年海洋发电所', 'EN': 'Gone Fission Hydroplant', 'JP': 'ムニ・エール海洋発電所'},
+    903: {'CN': '鲑坝', 'EN': 'Spawning Grounds', 'JP': 'シェケナダム'}
 }
 
 rule_ids = {
@@ -75,20 +42,12 @@ rule_ids = {
     "ガチアサリ": 5
 }
 
-rule_CN_names = {
-    1: "占地对战",
-    2: "蛮颓对战-真格区域",
-    3: "蛮颓对战-真格塔楼",
-    4: "蛮颓对战-真格虎鱼",
-    5: "蛮颓对战-真格蛤蜊"
-}
-
-rule_EN_names = {
-    1: "Turf War",
-    2: "Bankara - Splat Zones",
-    3: "Bankara - Tower Control",
-    4: "Bankara - Rainmaker",
-    5: "Bankara - Clam Blitz"
+rule_names = {
+    1: {'CN': "占地对战", 'EN': "Turf War", 'JP': "ナワバリバトル"},
+    2: {'CN': "蛮颓对战-真格区域", 'EN': "Bankara - Splat Zones", 'JP': "ガチエリア"},
+    3: {'CN': "蛮颓对战-真格塔楼", 'EN': "Bankara - Tower Control", 'JP': "ガチヤグラ"},
+    4: {'CN': "蛮颓对战-真格虎鱼", 'EN': "Bankara - Rainmaker", 'JP': "ガチホコバトル"},
+    5: {'CN': "蛮颓对战-真格蛤蜊", 'EN': "Bankara - Clam Blitz", 'JP': "ガチアサリ"}
 }
 
 weapon_ids = {
@@ -146,169 +105,131 @@ weapon_ids = {
     "トライストリンガー": 52,
     "LACT-450": 53,
     "ジムワイパー": 54,
-    "ドライブワイパー": 55,
+    "ドライブワイパー": 55
 }
 
-weapon_CN_names = {
-    1: "广域标记枪",
-    2: "新叶射击枪",
-    3: "窄域标记枪",
-    4: "专业模型枪MG",
-    5: "斯普拉射击枪",
-    6: "英雄射击枪 复制",
-    7: ".52加仑",
-    8: "N-ZAP85",
-    9: "顶尖射击枪",
-    10: ".96加仑",
-    11: "喷射清洁枪",
-    12: "新星爆破枪",
-    13: "火热爆破枪",
-    14: "远距爆破枪",
-    15: "冲涂爆破枪",
-    16: "快速爆破枪",
-    17: "快速爆破枪 精英",
-    18: "L3卷管枪",
-    19: "H3卷管枪",
-    20: "开瓶喷泉枪",
-    21: "碳纤维滚筒",
-    22: "斯普拉滚筒",
-    23: "电动马达滚筒",
-    24: "可变式滚筒",
-    25: "巴勃罗",
-    26: "北斋",
-    27: "鱿快洁α",
-    28: "斯普拉蓄力狙击枪",
-    29: "斯普拉准星枪",
-    30: "公升4K",
-    31: "4K准星枪",
-    32: "14式竹筒枪·甲",
-    33: "高压油管枪",
-    34: "飞溅泼桶",
-    35: "洗笔桶",
-    36: "回旋泼桶",
-    37: "满溢泡澡泼桶",
-    38: "爆炸泼桶",
-    39: "斯普拉旋转枪",
-    40: "桶装旋转枪",
-    41: "消防栓旋转枪",
-    42: "圆珠笔",
-    43: "鹦鹉螺号47",
-    44: "溅镀枪",
-    45: "斯普拉机动枪",
-    46: "开尔文525",
-    47: "双重清洁枪",
-    48: "四重弹跳手枪 黑",
-    49: "遮阳防空伞",
-    50: "露营防空伞",
-    51: "特工配件",
-    52: "三发猎鱼弓",
-    53: "LACT-450",
-    54: "工作刮水刀",
-    55: "雨刷刮水刀"
-}
-
-weapon_EN_names = {
-    1: "Sploosh-o-matic",
-    2: "Splattershot Jr.",
-    3: "Splash-o-matic",
-    4: "Aerospray MG",
-    5: "Splattershot",
-    6: "Hero Shot Replica",
-    7: ".52 Gal",
-    8: "N-ZAP '85",
-    9: "Splattershot Pro",
-    10: ".96 Gal",
-    11: "Jet Squelcher",
-    12: "Luna Blaster",
-    13: "Blaster",
-    14: "Range Blaster",
-    15: "Clash Blaster",
-    16: "Rapid Blaster",
-    17: "Rapid Blaster Pro",
-    18: "L-3 Nozzlenose",
-    19: "H-3 Nozzlenose",
-    20: "Squeezer",
-    21: "Carbon Roller",
-    22: "Splat Roller",
-    23: "Dynamo Roller",
-    24: "Flingza Roller",
-    25: "Inkbrush",
-    26: "Octobrush",
-    27: "Classic Squiffer",
-    28: "Splat Charger",
-    29: "Splatterscope",
-    30: "E-liter 4K",
-    31: "E-liter 4K Scope",
-    32: "Bamboozler 14 Mk I",
-    33: "Goo Tuber",
-    34: "Slosher",
-    35: "Tri-Slosher",
-    36: "Sloshing Machine",
-    37: "Bloblobber",
-    38: "Explosher",
-    39: "Mini Splatling",
-    40: "Heavy Splatling",
-    41: "Hydra Splatling",
-    42: "Ballpoint Splatling",
-    43: "Nautilus 47",
-    44: "Dapple Dualies",
-    45: "Splat Dualies",
-    46: "Glooga Dualies",
-    47: "Dualie Squelchers",
-    48: "Dark Tetra Dualies",
-    49: "Splat Brella",
-    50: "Tenta Brella",
-    51: "Undercover Brella",
-    52: "Tri-Stringer",
-    53: "REEF-LUX 450",
-    54: "Splatana Stamper",
-    55: "Splatana Wiper"
-}
-
-sp3db_CN_names = {
-    1: "喷喷喷解包数据库",
-    2: "刺冠订购装备1.x的概率",
-    3: "1.1.0 武器射程速查",
-    4: "餐券效果叠加吗？",
-    5: "真格与涂地模式的金币获取对比",
-    6: "喷喷喷自制amiibo卡方法",
-    7: "喷喷喷自制amiibo卡数据包",
-    8: "第一季扭蛋概率",
-    9: "官推发的发售纪念名牌的背景二维码",
-    10: "Splatoon 3 开发者访谈系列第一期",
-    11: "社長が訊く『Splatoon（スプラトゥーン）』", 
-    12: "【视频推荐】垃圾乌贼字幕组——翻译各路神仙的视频",
-    13: "喷喷喷打工模式不完全指北"
-}
-
-sp3db_EN_names = {
-    1: "Splatoon 3 datamine Database",
-    2: "Murch gear probability",
-    3: "Sp3 1.1.0 Weapon Range Cheatsheet",
-    4: "Do Team Tickets Stack in Splatoon 3?",
-    5: "Turf War vs Bankara match coin farm speed",
-    6: "How to write dummy amiibo cards",
-    7: "Dummy amiibo cards files",
-    8: "Season 1 gatha rates",
-    9: "Official launch Splashtag banner QR code",
-    10: "Splatoon 3 developers interview",
-    11: "Splatoon 1 developers interviewed by Iwada Satoru",
-    12: "[Splatoon 3 videos] 垃圾乌贼字幕组 - Bilibili channel that translate and upload useful Splatoon 3 videos",
-    13: "Splatoon 3 Salmon Run newbie guide"
+weapon_names = {
+    1: {'CN': "广域标记枪", 'EN': "Sploosh-o-matic", 'JP': "ボールドマーカー"},
+    2: {'CN': "新叶射击枪", 'EN': "Splattershot Jr.", 'JP': "わかばシューター"},
+    3: {'CN': "窄域标记枪", 'EN': "Splash-o-matic", 'JP': "シャープマーカー"},
+    4: {'CN': "专业模型枪MG", 'EN': "Aerospray MG", 'JP': "プロモデラーMG"},
+    5: {'CN': "斯普拉射击枪", 'EN': "Splattershot", 'JP': "スプラシューター"},
+    6: {'CN': "英雄射击枪 复制", 'EN': "Hero Shot Replica", 'JP': "ヒーローシューター レプリカ"},
+    7: {'CN': ".52加仑", 'EN': ".52 Gal", 'JP': ".52ガロン"},
+    8: {'CN': "N-ZAP85", 'EN': "N-ZAP '85", 'JP': "N-ZAP85"},
+    9: {'CN': "顶尖射击枪", 'EN': "Splattershot Pro", 'JP': "プライムシューター"},
+    10: {'CN': ".96加仑", 'EN': ".96 Gal", 'JP': ".96ガロン"},
+    11: {'CN': "喷射清洁枪", 'EN': "Jet Squelcher", 'JP': "ジェットスイーパー"},
+    12: {'CN': "新星爆破枪", 'EN': "Luna Blaster", 'JP': "ノヴァブラスター"},
+    13: {'CN': "火热爆破枪", 'EN': "Blaster", 'JP': "ホットブラスター"},
+    14: {'CN': "远距爆破枪", 'EN': "Range Blaster", 'JP': "ロングブラスター"},
+    15: {'CN': "冲涂爆破枪", 'EN': "Clash Blaster", 'JP': "クラッシュブラスター"},
+    16: {'CN': "快速爆破枪", 'EN': "Rapid Blaster", 'JP': "ラピッドブラスター"},
+    17: {'CN': "快速爆破枪 精英", 'EN': "Rapid Blaster Pro", 'JP': "Rブラスターエリート"},
+    18: {'CN': "L3卷管枪", 'EN': "L-3 Nozzlenose", 'JP': "L3リールガン"},
+    19: {'CN': "H3卷管枪", 'EN': "H-3 Nozzlenose", 'JP': "H3リールガン"},
+    20: {'CN': "开瓶喷泉枪", 'EN': "Squeezer", 'JP': "ボトルガイザー"},
+    21: {'CN': "碳纤维滚筒", 'EN': "Carbon Roller", 'JP': "カーボンローラー"},
+    22: {'CN': "斯普拉滚筒", 'EN': "Splat Roller", 'JP': "スプラローラー"},
+    23: {'CN': "电动马达滚筒", 'EN': "Dynamo Roller", 'JP': "ダイナモローラー"},
+    24: {'CN': "可变式滚筒", 'EN': "Flingza Roller", 'JP': "ヴァリアブルローラー"},
+    25: {'CN': "巴勃罗", 'EN': "Inkbrush", 'JP': "パブロ"},
+    26: {'CN': "北斋", 'EN': "Octobrush", 'JP': "ホクサイ"},
+    27: {'CN': "鱿快洁α", 'EN': "Classic Squiffer", 'JP': "スクイックリンα"},
+    28: {'CN': "斯普拉蓄力狙击枪", 'EN': "Splat Charger", 'JP': "スプラチャージャー"},
+    29: {'CN': "斯普拉准星枪", 'EN': "Splatterscope", 'JP': "スプラスコープ"},
+    30: {'CN': "公升4K", 'EN': "E-liter 4K", 'JP': "リッター4K"},
+    31: {'CN': "4K准星枪", 'EN': "E-liter 4K Scope", 'JP': "4Kスコープ"},
+    32: {'CN': "14式竹筒枪·甲", 'EN': "Bamboozler 14 Mk I", 'JP': "14式竹筒銃・甲"},
+    33: {'CN': "高压油管枪", 'EN': "Goo Tuber", 'JP': "ソイチューバー"},
+    34: {'CN': "飞溅泼桶", 'EN': "Slosher", 'JP': "バケットスロッシャー"},
+    35: {'CN': "洗笔桶", 'EN': "Tri-Slosher", 'JP': "ヒッセン"},
+    36: {'CN': "回旋泼桶", 'EN': "Sloshing Machine", 'JP': "スクリュースロッシャー"},
+    37: {'CN': "满溢泡澡泼桶", 'EN': "Bloblobber", 'JP': "オーバーフロッシャー"},
+    38: {'CN': "爆炸泼桶", 'EN': "Explosher", 'JP': "エクスプロッシャー"},
+    39: {'CN': "斯普拉旋转枪", 'EN': "Mini Splatling", 'JP': "スプラスピナー"},
+    40: {'CN': "桶装旋转枪", 'EN': "Heavy Splatling", 'JP': "バレルスピナー"},
+    41: {'CN': "消防栓旋转枪", 'EN': "Hydra Splatling", 'JP': "ハイドラント"},
+    42: {'CN': "圆珠笔", 'EN': "Ballpoint Splatling", 'JP': "クーゲルシュライバー"},
+    43: {'CN': "鹦鹉螺号47", 'EN': "Nautilus 47", 'JP': "ノーチラス47"},
+    44: {'CN': "溅镀枪", 'EN': "Dapple Dualies", 'JP': "スパッタリー"},
+    45: {'CN': "斯普拉机动枪", 'EN': "Splat Dualies", 'JP': "スプラマニューバー"},
+    46: {'CN': "开尔文525", 'EN': "Glooga Dualies", 'JP': "ケルビン525"},
+    47: {'CN': "双重清洁枪", 'EN': "Dualie Squelchers", 'JP': "デュアルスイーパー"},
+    48: {'CN': "四重弹跳手枪 黑", 'EN': "Dark Tetra Dualies", 'JP': "クアッドホッパーブラック"},
+    49: {'CN': "遮阳防空伞", 'EN': "Splat Brella", 'JP': "パラシェルター"},
+    50: {'CN': "露营防空伞", 'EN': "Tenta Brella", 'JP': "キャンピングシェルター"},
+    51: {'CN': "特工配件", 'EN': "Undercover Brella", 'JP': "スパイガジェット"},
+    52: {'CN': "三发猎鱼弓", 'EN': "Tri-Stringer", 'JP': "トライストリンガー"},
+    53: {'CN': "LACT-450", 'EN': "REEF-LUX 450", 'JP': "LACT-450"},
+    54: {'CN': "工作刮水刀", 'EN': "Splatana Stamper", 'JP': "ジムワイパー"},
+    55: {'CN': "雨刷刮水刀", 'EN': "Splatana Wiper", 'JP': "ドライブワイパー"}
 }
 
 sp3db = {
-    1: "https://leanny.github.io/splat3/database.html",
-    2: "https://cdn.discordapp.com/attachments/1016112433200369664/1023029608645406720/unknown.png",
-    3: "https://cdn.discordapp.com/attachments/1016112433200369664/1020800360467660800/image0.jpg",
-    4: "https://www.touchtapplay.com/do-team-tickets-stack-in-splatoon-3-answered/",
-    5: "https://bbs.nga.cn/read.php?tid=33489270",
-    6: "https://discord.com/channels/1016107378309074985/1016112433200369664/1019471044744073297",
-    7: "https://discord.com/channels/1016107378309074985/1016112433200369664/1019472783538925600",
-    8: "https://discord.com/channels/1016107378309074985/1016112433200369664/1018825351603957780",
-    9: "https://discord.com/channels/1016107378309074985/1016112433200369664/1017751600506355802",
-    10: "https://www.nintendo.co.jp/interview/av5ja/index.html",
-    11: "https://www.nintendo.co.jp/wiiu/interview/agmj/vol1/index.html",
-    12: "https://space.bilibili.com/225557/",
-    13: "https://nga.178.com/read.php?tid=33460726"
+    1: [
+        "https://leanny.github.io/splat3/database.html",
+        "喷喷喷解包数据库",
+        "Splatoon 3 datamine Database"
+        ],
+    2: [
+        "https://cdn.discordapp.com/attachments/1016112433200369664/1023029608645406720/unknown.png",
+        "刺冠订购装备1.x的概率",
+        "Murch gear probability"
+        ],
+    3: [
+        "https://cdn.discordapp.com/attachments/1016112433200369664/1020800360467660800/image0.jpg",
+        "1.1.0 武器射程速查",
+        "Sp3 1.1.0 Weapon Range Cheatsheet"
+        ],
+    4: [
+        "https://www.touchtapplay.com/do-team-tickets-stack-in-splatoon-3-answered/",
+        "餐券效果叠加吗？",
+        "Do Team Tickets Stack in Splatoon 3?"
+        ],
+    5: [
+        "https://bbs.nga.cn/read.php?tid=33489270",
+        "真格与涂地模式的金币获取对比",
+        "Turf War vs Bankara match coin farm speed"
+        ],
+    6: [
+        "https://discord.com/channels/1016107378309074985/1016112433200369664/1019471044744073297",
+        "喷喷喷自制amiibo卡方法",
+        "How to write dummy amiibo cards"
+        ],
+    7: [
+        "https://discord.com/channels/1016107378309074985/1016112433200369664/1019472783538925600",
+        "喷喷喷自制amiibo卡数据包",
+        "Dummy amiibo cards files"
+        ],
+    8: [
+        "https://discord.com/channels/1016107378309074985/1016112433200369664/1018825351603957780",
+        "第一季扭蛋概率",
+        "Season 1 gatha rates"
+        ],
+    9: [
+        "https://discord.com/channels/1016107378309074985/1016112433200369664/1017751600506355802",
+        "官推发的发售纪念名牌的背景二维码",
+        "Official launch Splashtag banner QR code"
+        ],
+    10: [
+        "https://www.nintendo.co.jp/interview/av5ja/index.html",
+        "Splatoon 3 开发者访谈系列第一期",
+        "Splatoon 3 developers interview"
+        ],
+    11: [
+        "https://www.nintendo.co.jp/wiiu/interview/agmj/vol1/index.html",
+        "社長が訊く『Splatoon（スプラトゥーン）』",
+        "Splatoon 1 developers interviewed by Iwada Satoru"
+        ],
+    12: [
+        "https://space.bilibili.com/225557/",
+        "【视频推荐】垃圾乌贼字幕组——翻译各路神仙的视频",
+        "[Splatoon 3 videos] 垃圾乌贼字幕组 - Bilibili channel that translate and upload useful Splatoon 3 videos"
+        ],
+    13: [
+        "https://nga.178.com/read.php?tid=33460726",
+        "喷喷喷打工模式不完全指北",
+        "Splatoon 3 Salmon Run newbie guide"
+        ]
 }

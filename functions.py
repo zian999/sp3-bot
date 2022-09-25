@@ -1,5 +1,7 @@
 from datetime import datetime
+import os
 from io import BytesIO
+from socket import getnameinfo
 import requests
 import discord
 from PIL import Image
@@ -46,14 +48,15 @@ def embed_content(entry):
     if datetime.now(tz = t[0].tzinfo) > t[0]:
         tdelta = timediff(datetime.now(tz = t[1].tzinfo), t[1])
         embed = discord.Embed(
-            title = f"Ends in {tdelta[0]} days, {tdelta[1]} hours, {tdelta[2]} mins."
+            title = f"Ends in {tdelta[0]} day(s), {tdelta[1]} hour(s), {tdelta[2]} min(s)."
         )
     else:
         tdelta = timediff(datetime.now(tz = t[0].tzinfo), t[0])
         embed = discord.Embed(
-            title = f"Starts in {tdelta[0]} days, {tdelta[1]} hours, {tdelta[2]} mins."
+            title = f"Starts in {tdelta[0]} day(s), {tdelta[1]} hour(s), {tdelta[2]} min(s)."
         )
     if ('is_tricolor' in entry) and entry['is_tricolor']:
+        rule_id = rule_ids[entry['rule']['name']]
         stage_id1 = stage_ids[entry['stages'][0]['name']]
         stage_id2 = stage_ids[entry['stages'][1]['name']]
         tc_stage_id = stage_ids[entry['tricolor_stage']['name']]
@@ -62,34 +65,35 @@ def embed_content(entry):
         tc_stage_url = entry['tricolor_stage']['image']
         embed.add_field(
             name = "~ RULE ~",
-            value = rule_CN_names[rule_ids[entry['rule']['name']]],
+            value = get_name("rule", rule_id),
             inline = False
         )
         embed.add_field(
             name = "~ STAGES ~",
-            value = stage_CN_names[stage_id1] + '\n' + stage_CN_names[stage_id2],
+            value = get_name("stage", stage_id1) + '\n' + get_name("stage", stage_id2),
             inline = False
         )
         embed.add_field(
             name = "~ TRICOLOR STAGE ~",
-            value = stage_CN_names[tc_stage_id],
+            value = get_name("stage", tc_stage_id),
             inline = False
         )
         file = discord.File(embed_tc_stage_image(stage_url1, stage_url2, tc_stage_url), filename = "o.png")
         embed.set_image(url="attachment://o.png")
     else:
+        rule_id = rule_ids[entry['rule']['name']]
         stage_id1 = stage_ids[entry['stages'][0]['name']]
         stage_id2 = stage_ids[entry['stages'][1]['name']]
         stage_url1 = entry['stages'][0]['image']
         stage_url2 = entry['stages'][1]['image']
         embed.add_field(
             name = "~ RULE ~",
-            value = rule_CN_names[rule_ids[entry['rule']['name']]],
+            value = get_name("rule", rule_id),
             inline = False
         )
         embed.add_field(
             name = "~ STAGES ~",
-            value = stage_CN_names[stage_id1] + '\n' + stage_CN_names[stage_id2],
+            value = get_name("stage", stage_id1) + '\n' + get_name("stage", stage_id2),
             inline = False
         )
         file = discord.File(embed_stage_image(stage_url1, stage_url2), filename = "o.png")
@@ -101,12 +105,12 @@ def embed_content_coop(entry):
     if datetime.now(tz = t[0].tzinfo) > t[0]:
         tdelta = timediff(datetime.now(tz = t[1].tzinfo), t[1])
         embed = discord.Embed(
-            title = f"Ends in {tdelta[0]} days, {tdelta[1]} hours, {tdelta[2]} mins."
+            title = f"Ends in {tdelta[0]} day(s), {tdelta[1]} hour(s), {tdelta[2]} min(s)."
         )
     else:
         tdelta = timediff(datetime.now(tz = t[0].tzinfo), t[0])
         embed = discord.Embed(
-            title = f"Starts in {tdelta[0]} days, {tdelta[1]} hours, {tdelta[2]} mins."
+            title = f"Starts in {tdelta[0]} day(s), {tdelta[1]} hour(s), {tdelta[2]} min(s)."
         )
     weapon_id1 = weapon_ids[entry['weapons'][0]['name']]
     weapon_id2 = weapon_ids[entry['weapons'][1]['name']]
@@ -116,19 +120,19 @@ def embed_content_coop(entry):
     embed.add_field(
         name = "~ WEAPONS ~",
         value = (
-            weapon_CN_names[weapon_id1] + '\n'
-            + weapon_CN_names[weapon_id2] + '\n'
-            + weapon_CN_names[weapon_id3] + '\n'
-            + weapon_CN_names[weapon_id4]
+            get_name("weapon", weapon_id1) + '\n'
+            + get_name("weapon", weapon_id2) + '\n'
+            + get_name("weapon", weapon_id3) + '\n'
+            + get_name("weapon", weapon_id4)
         ),
         inline = False
     )
     embed.add_field(
         name = "~ STAGE ~",
-        value = stage_CN_names[stage_id],
+        value = get_name("stage", stage_id),
         inline = False
     )
-    embed.set_image(url=entry['stage']['image'])
+    embed.set_image(url = entry['stage']['image'])
     return embed
 
 
@@ -181,3 +185,49 @@ def embed_tc_stage_image(url1, url2, tcid):
     im.save(b, "PNG")
     b.seek(0)
     return b
+
+def get_name(name_type: str, name_id: int):
+    if name_type == 'stage':
+        return stage_names[name_id][os.getenv('BOT_LANG')]
+    elif name_type == 'weapon':
+        return weapon_names[name_id][os.getenv('BOT_LANG')]
+    elif name_type == 'rule':
+        return rule_names[name_id][os.getenv('BOT_LANG')]
+
+def archive_menu():
+    if os.getenv('BOT_LANG') == "CN":
+        embed = discord.Embed(
+            title = f"目前库中有{len(sp3db)}个条目."
+            )
+        embed.add_field(
+                name = "~ Contents ~",
+                value = (
+                    '\n'.join(['\t'.join(['`'+str(n)+'`',l[1]]) for (n,l) in sp3db.items()])
+                    + '\n\n**请使用`?archive n`来查看第`n`个 条目。**' 
+                ),
+                inline = False
+            )
+        return embed
+    if (os.getenv('BOT_LANG') == "EN") or (os.getenv('BOT_LANG') == "JP"):
+        embed = discord.Embed(
+            title = f"There are {len(sp3db)} entries in the archive."
+            )
+        embed.add_field(
+                name = "~ Contents ~",
+                value = (
+                    '\n'.join(['\t'.join(['`'+str(n)+'`',l[2]]) for (n,l) in sp3db.items()])
+                    + '\n\n**Please use `?archive n` to view `n`th entry.**' 
+                ),
+                inline = False
+            )
+        return embed
+
+def show_archive(n: int):
+    if (n < 1) or (n > len(sp3db)):
+        return {
+            'CN': f'无效的n，请输入一个在[1, {len(sp3db)}]之内的n！',
+            'EN': 'The index is invalid. Please input an `n` in [1, {len(sp3db)}]',
+            'JP': 'The index is invalid. Please input an `n` in [1, {len(sp3db)}]'
+            }
+    else:
+        return (f'**#{n}: ' + ' / '.join(sp3db[n][1:3]) + '**\n' + sp3db[n][0])

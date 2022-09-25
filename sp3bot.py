@@ -331,10 +331,29 @@ async def fest(ctx, n = 2):
         embedVar = embed_content(data[i])
         await ctx.send(file = embedVar[0], embed = embedVar[1])
 
+@bot.command(description='Usage: `?getlang`')
+async def getlang(ctx):
+    await ctx.reply(os.getenv('BOT_LANG'))
+
+@bot.command(description='Example: `?setlang EN`')
+async def setlang(ctx, lang = None):
+    supported_lang = ['CN', 'EN', 'JP']
+    if lang is None:
+        await ctx.reply(f'Please assign a language among: {supported_lang}')
+        return
+    elif lang in supported_lang:
+        os.environ['BOT_LANG'] = lang
+        await ctx.reply(f'The display language of stages and weapons has been set to {lang}!')
+
 @bot.command(description='Example: `?archive` | `?archive 4`')
 async def archive(ctx, n = None):
-    pass
-
+    if n is None:
+        await ctx.reply(embed = archive_menu())
+    content = show_archive(int(n))
+    if content is None:
+        await ctx.reply(content[os.getenv['BOT_LANG']])
+    else:
+        await ctx.reply(content)
 
 
 bot.run(os.getenv('BOT_TOKEN'))
