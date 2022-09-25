@@ -331,7 +331,7 @@ async def fest(ctx, n = 2):
         embedVar = embed_content(data[i])
         await ctx.send(file = embedVar[0], embed = embedVar[1])
 
-@bot.command(description='')
+@bot.command(description='Example: `?archive` | `?archive 4`')
 async def archive(ctx, n = None):
     pass
 
