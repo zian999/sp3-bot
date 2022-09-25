@@ -1,0 +1,1 @@
+worker: python3 sp3bot.py
