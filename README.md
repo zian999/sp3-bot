@@ -20,10 +20,16 @@ This bot uses the [Spla3 API](https://spla3.yuu26.com/). Thanks to its author!
 
 7. `?fest [n]` - List the current and the next `n-1` SplatFest stages on the schedule. The default value for `n` is 2.
 
+8. `?getlang` - Show the current language that is used to display the stage and weapon names.
+
+9. `?setlang` - Set the language that is used to display the stage and weapon names. Currently support CN/EN/JP.
+
+10. `?archive [n]` - Show the _n_th entry of a Splatoon 3 databse collected by my server members. If _n_ is not provided, the list of all entries will be shown.
+
 ## ToDo
 
 - [DONE] The author of the Spla3 API recently added support for the SplatFest informaion. I am going to add that to my bot too.
 
 - [DONE] Currently, the bot is using the stage images from Discord CDN. Recently, the author of Spla3 API included the urls of stage and weapon images in the API. I am going to use those urls in my bot.
 
-- Support for other language(s).
+- [DONE] Support for EN & JP languages.
