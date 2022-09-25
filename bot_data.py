@@ -223,7 +223,7 @@ sp3db = {
         "Splatoon 1 developers interviewed by Iwada Satoru"
         ],
     12: [
-        "https://space.bilibili.com/225557/",
+        "https://space.bilibili.com/225557/videos",
         "【视频推荐】垃圾乌贼字幕组——翻译各路神仙的视频",
         "[Splatoon 3 videos] 垃圾乌贼字幕组 - Bilibili channel that translate and upload useful Splatoon 3 videos"
         ],
