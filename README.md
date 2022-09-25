@@ -4,7 +4,7 @@ This is a bot for my Splatoon3 discord server. It can check and send the current
 
 This bot uses the [Spla3 API](https://spla3.yuu26.com/). Thanks to its author!
 
-## Bot Commands：
+## Bot Commands
 
 1. `?now [turf|open|challenge|salmonrun|fest]` - List all the current [turf war | bankara-open | bankara-challenge | salmonrun | SplatFest] stages. If no format parameter is given, the info will be displayed in the order of Turf War, Bankara Challenge, Bankara Open, and Salmon Run.
 
@@ -33,3 +33,7 @@ This bot uses the [Spla3 API](https://spla3.yuu26.com/). Thanks to its author!
 - [DONE] Currently, the bot is using the stage images from Discord CDN. Recently, the author of Spla3 API included the urls of stage and weapon images in the API. I am going to use those urls in my bot.
 
 - [DONE] Support for EN & JP languages.
+
+## Screenshot
+
+![Screenshot1](https://zian999.github.io/images/posts/2022/sp3bot-screenshot1.jpg)
