@@ -56,9 +56,10 @@ def embed_content(entry):
     if ('is_tricolor' in entry) and entry['is_tricolor']:
         stage_id1 = stage_ids[entry['stages'][0]['name']]
         stage_id2 = stage_ids[entry['stages'][1]['name']]
-        tc_stage_id = stage_ids[entry['tricolor_stage']]
+        tc_stage_id = stage_ids[entry['tricolor_stage']['name']]
         stage_url1 = entry['stages'][0]['image']
         stage_url2 = entry['stages'][1]['image']
+        tc_stage_url = entry['tricolor_stage']['image']
         embed.add_field(
             name = "~ RULE ~",
             value = rule_CN_names[rule_ids[entry['rule']['name']]],
@@ -74,11 +75,13 @@ def embed_content(entry):
             value = stage_CN_names[tc_stage_id],
             inline = False
         )
-        file = discord.File(embed_tc_stage_image(stage_url1, stage_url2), filename = "o.png")
+        file = discord.File(embed_tc_stage_image(stage_url1, stage_url2, tc_stage_url), filename = "o.png")
         embed.set_image(url="attachment://o.png")
     else:
         stage_id1 = stage_ids[entry['stages'][0]['name']]
         stage_id2 = stage_ids[entry['stages'][1]['name']]
+        stage_url1 = entry['stages'][0]['image']
+        stage_url2 = entry['stages'][1]['image']
         embed.add_field(
             name = "~ RULE ~",
             value = rule_CN_names[rule_ids[entry['rule']['name']]],
@@ -89,7 +92,7 @@ def embed_content(entry):
             value = stage_CN_names[stage_id1] + '\n' + stage_CN_names[stage_id2],
             inline = False
         )
-        file = discord.File(embed_stage_image(stage_id1, stage_id2), filename = "o.png")
+        file = discord.File(embed_stage_image(stage_url1, stage_url2), filename = "o.png")
         embed.set_image(url="attachment://o.png")
     return [file, embed]
 
@@ -128,18 +131,7 @@ def embed_content_coop(entry):
     embed.set_image(url=entry['stage']['image'])
     return embed
 
-def create_image(url1, url2):
-    img1 = read_image(url1)
-    img2 = read_image(url2)
-    img = merge_image(img1, img2)
-    return img
 
-def create_tc_image(url1, url2, url3):
-    img1 = read_image(url1)
-    img2 = read_image(url2)
-    img3 = read_image(url3)
-    img = merge_image(merge_image(img1, img2), img3)
-    return img
 
 def read_image(url):
     response = requests.get(url)
@@ -154,15 +146,37 @@ def merge_image(im1, im2):
     im.paste(im2, (0, im1.size[1]))
     return im
 
-def embed_stage_image(id1, id2):
-    im = create_image(stage_images[id1], stage_images[id2])
+def merge_tc_image(im1, im2, im3):
+    w = max(im1.size[0], im2.size[0], im3.size[0])
+    h = im1.size[1] + im2.size[1] + im3.size[1]
+    im = Image.new("RGBA", (w, h))
+    im.paste(im1)
+    im.paste(im2, (0, im1.size[1]))
+    im.paste(im3, (0, im1.size[1]+im2.size[1]))
+    return im
+
+def create_image(url1, url2):
+    img1 = read_image(url1)
+    img2 = read_image(url2)
+    img = merge_image(img1, img2)
+    return img
+
+def create_tc_image(url1, url2, url3):
+    img1 = read_image(url1)
+    img2 = read_image(url2)
+    img3 = read_image(url3)
+    img = merge_tc_image(img1, img2, img3)
+    return img
+
+def embed_stage_image(url1, url2):
+    im = create_image(url1, url2)
     b = BytesIO()
     im.save(b, "PNG")
     b.seek(0)
     return b
 
-def embed_tc_stage_image(id1, id2, tcid):
-    im = create_tc_image(stage_images[id1], stage_images[id2], stage_images[tcid])
+def embed_tc_stage_image(url1, url2, tcid):
+    im = create_tc_image(url1, url2, tcid)
     b = BytesIO()
     im.save(b, "PNG")
     b.seek(0)

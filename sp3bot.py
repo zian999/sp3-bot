@@ -337,4 +337,4 @@ async def archive(ctx, n = None):
 
 
 
-bot.run(os.getenv('BOT_TOKEN'))
+bot.run(os.getenv('TESTBOT_TOKEN'))
