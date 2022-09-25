@@ -277,7 +277,8 @@ sp3db_CN_names = {
     9: "官推发的发售纪念名牌的背景二维码",
     10: "Splatoon 3 开发者访谈系列第一期",
     11: "社長が訊く『Splatoon（スプラトゥーン）』", 
-    12: "【视频推荐】垃圾乌贼字幕组——翻译各路神仙的视频"
+    12: "【视频推荐】垃圾乌贼字幕组——翻译各路神仙的视频",
+    13: "喷喷喷打工模式不完全指北"
 }
 
 sp3db_EN_names = {
@@ -292,7 +293,8 @@ sp3db_EN_names = {
     9: "Official launch Splashtag banner QR code",
     10: "Splatoon 3 developers interview",
     11: "Splatoon 1 developers interviewed by Iwada Satoru",
-    12: "[Splatoon 3 videos] 垃圾乌贼字幕组 - Bilibili channel that translate and upload useful Splatoon 3 videos"
+    12: "[Splatoon 3 videos] 垃圾乌贼字幕组 - Bilibili channel that translate and upload useful Splatoon 3 videos",
+    13: "Splatoon 3 Salmon Run newbie guide"
 }
 
 sp3db = {
@@ -307,5 +309,6 @@ sp3db = {
     9: "https://discord.com/channels/1016107378309074985/1016112433200369664/1017751600506355802",
     10: "https://www.nintendo.co.jp/interview/av5ja/index.html",
     11: "https://www.nintendo.co.jp/wiiu/interview/agmj/vol1/index.html",
-    12: "https://space.bilibili.com/225557/"
+    12: "https://space.bilibili.com/225557/",
+    13: "https://nga.178.com/read.php?tid=33460726"
 }
