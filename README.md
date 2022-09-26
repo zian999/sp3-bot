@@ -36,4 +36,10 @@ This bot uses the [Spla3 API](https://spla3.yuu26.com/). Thanks to its author!
 
 ## Screenshot
 
+- Screenshot 1
+
 ![Screenshot1](https://zian999.github.io/images/posts/2022/sp3bot-screenshot1.jpg)
+
+- Screenshot 2
+
+![Screenshot2](https://zian999.github.io/images/posts/2022/sp3bot-screenshot2.jpg)
