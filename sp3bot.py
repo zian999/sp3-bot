@@ -118,7 +118,7 @@ async def salmonrun(ctx, n = 2):
     await ctx.reply(content = messageVar)
     for i in range(n):
         embedVar = embed_content_coop(data[i])
-        await ctx.send(embed = embedVar)
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
 
 
 @bot.command(description='Usage: ?now [turf|open|challenge|salmonrun|fest]')
@@ -164,7 +164,7 @@ async def now(ctx, format = None):
         '''
         await ctx.reply(content = messageVar)
         embedVar = embed_content_coop(data[3][0])
-        await ctx.send(embed = embedVar)
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
     if format == 'turf':
         if data[0][0]['is_fest']:
             await ctx.reply('🎆SplatFest🎆 is going on! No regular Truf War!')
@@ -201,7 +201,7 @@ async def now(ctx, format = None):
         '''
         await ctx.reply(content = messageVar)
         embedVar = embed_content_coop(data[3][0])
-        await ctx.send(embed = embedVar)
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
     if format == 'fest':
         if not(data[4][0]['is_fest']):
             await ctx.reply('🎆SplatFest🎆 is not going on...')
@@ -257,7 +257,7 @@ async def next(ctx, format = None):
         '''
         await ctx.reply(content = messageVar)
         embedVar = embed_content_coop(data[3][0])
-        await ctx.send(embed = embedVar)
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
     if format == 'turf':
         if data[0][0]['is_fest']:
             await ctx.reply('🎆SplatFest🎆 is going on! No regular Truf War!')
@@ -294,7 +294,7 @@ async def next(ctx, format = None):
         '''
         await ctx.reply(content = messageVar)
         embedVar = embed_content_coop(data[3][0])
-        await ctx.send(embed = embedVar)
+        await ctx.send(file = embedVar[0], embed = embedVar[1])
     if format == 'fest':
         if not(data[4][0]['is_fest']):
             await ctx.reply('🎆SplatFest🎆 is not going on...')

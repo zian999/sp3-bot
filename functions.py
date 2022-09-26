@@ -112,18 +112,17 @@ def embed_content_coop(entry):
         embed = discord.Embed(
             title = f"Starts in {tdelta[0]} day(s), {tdelta[1]} hour(s), {tdelta[2]} min(s)."
         )
-    weapon_id1 = weapon_ids[entry['weapons'][0]['name']]
-    weapon_id2 = weapon_ids[entry['weapons'][1]['name']]
-    weapon_id3 = weapon_ids[entry['weapons'][2]['name']]
-    weapon_id4 = weapon_ids[entry['weapons'][3]['name']]
+    weapon_i = [weapon_ids[entry['weapons'][i]['name']] for i in range(4)]
+    weapon_urls = [entry['weapons'][i]['image'] for i in range(4)]
+    stage_url = entry['stage']['image']
     stage_id = stage_ids[entry['stage']['name']]
     embed.add_field(
         name = "~ WEAPONS ~",
         value = (
-            get_name("weapon", weapon_id1) + '\n'
-            + get_name("weapon", weapon_id2) + '\n'
-            + get_name("weapon", weapon_id3) + '\n'
-            + get_name("weapon", weapon_id4)
+            get_name("weapon", weapon_i[0]) + '\n'
+            + get_name("weapon", weapon_i[1]) + '\n'
+            + get_name("weapon", weapon_i[2]) + '\n'
+            + get_name("weapon", weapon_i[3])
         ),
         inline = False
     )
@@ -132,8 +131,9 @@ def embed_content_coop(entry):
         value = get_name("stage", stage_id),
         inline = False
     )
-    embed.set_image(url = entry['stage']['image'])
-    return embed
+    file = discord.File(embed_coop_image(stage_url, weapon_urls), filename = "o.png")
+    embed.set_image(url="attachment://o.png")
+    return [file, embed]
 
 
 
@@ -159,6 +159,22 @@ def merge_tc_image(im1, im2, im3):
     im.paste(im3, (0, im1.size[1]+im2.size[1]))
     return im
 
+def merge_coop_image(im0, im1, im2, im3, im4):
+    w = im0.size[0]
+    weapon_w = int(im0.size[0]/4)
+    h = im0.size[1] + weapon_w
+    im1 = im1.resize((weapon_w, weapon_w))
+    im2 = im2.resize((weapon_w, weapon_w))
+    im3 = im3.resize((weapon_w, weapon_w))
+    im4 = im4.resize((weapon_w, weapon_w))
+    im = Image.new("RGBA", (w, h))
+    im.paste(im0)
+    im.paste(im1, (0, im0.size[1]))
+    im.paste(im2, (im1.size[0], im0.size[1]))
+    im.paste(im3, (2*im1.size[0], im0.size[1]))
+    im.paste(im4, (3*im1.size[0], im0.size[1]))
+    return im
+
 def create_image(url1, url2):
     img1 = read_image(url1)
     img2 = read_image(url2)
@@ -172,6 +188,15 @@ def create_tc_image(url1, url2, url3):
     img = merge_tc_image(img1, img2, img3)
     return img
 
+def create_coop_image(url0, url1, url2, url3, url4):
+    img0 = read_image(url0)
+    img1 = read_image(url1)
+    img2 = read_image(url2)
+    img3 = read_image(url3)
+    img4 = read_image(url4)
+    img = merge_coop_image(img0, img1, img2, img3, img4)
+    return img
+
 def embed_stage_image(url1, url2):
     im = create_image(url1, url2)
     b = BytesIO()
@@ -181,6 +206,13 @@ def embed_stage_image(url1, url2):
 
 def embed_tc_stage_image(url1, url2, tcid):
     im = create_tc_image(url1, url2, tcid)
+    b = BytesIO()
+    im.save(b, "PNG")
+    b.seek(0)
+    return b
+
+def embed_coop_image(url0, urls):
+    im = create_coop_image(url0, urls[0], urls[1], urls[2], urls[3])
     b = BytesIO()
     im.save(b, "PNG")
     b.seek(0)

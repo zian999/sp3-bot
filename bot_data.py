@@ -11,9 +11,9 @@ stage_ids = {
     'チョウザメ造船': 14,
     'ザトウマーケット': 15,
     'スメーシーワールド': 16,
-    'アラマキ砦': 901,
-    'ムニ・エール海洋発電所': 902,
-    'シェケナダム': 903
+    'アラマキ砦': 902,
+    'ムニ・エール海洋発電所': 907,
+    'シェケナダム': 901
 }
 
 stage_names = {
@@ -29,9 +29,9 @@ stage_names = {
     14: {'CN': '鲟鱼造船厂', 'EN': 'Sturgeon Shipyard', 'JP': 'チョウザメ造船'},
     15: {'CN': '座头购物中心', 'EN': 'MakoMart', 'JP': 'ザトウマーケット'},
     16: {'CN': '醋饭海洋世界', 'EN': 'Wahoo World', 'JP': 'スメーシーワールド'},
-    901: {'CN': '新卷堡', 'EN': 'Sockeye Station', 'JP': 'アラマキ砦'},
-    902: {'CN': '麦年海洋发电所', 'EN': 'Gone Fission Hydroplant', 'JP': 'ムニ・エール海洋発電所'},
-    903: {'CN': '鲑坝', 'EN': 'Spawning Grounds', 'JP': 'シェケナダム'}
+    902: {'CN': '新卷堡', 'EN': 'Sockeye Station', 'JP': 'アラマキ砦'},
+    907: {'CN': '麦年海洋发电所', 'EN': 'Gone Fission Hydroplant', 'JP': 'ムニ・エール海洋発電所'},
+    901: {'CN': '鲑坝', 'EN': 'Spawning Grounds', 'JP': 'シェケナダム'}
 }
 
 rule_ids = {
@@ -51,6 +51,7 @@ rule_names = {
 }
 
 weapon_ids = {
+    "ランダム": 0,
     "ボールドマーカー": 1,
     "わかばシューター": 2,
     "シャープマーカー": 3,
@@ -109,6 +110,7 @@ weapon_ids = {
 }
 
 weapon_names = {
+    0: {'CN': "随机", 'EN': "Random", 'JP': "ランダム"},
     1: {'CN': "广域标记枪", 'EN': "Sploosh-o-matic", 'JP': "ボールドマーカー"},
     2: {'CN': "新叶射击枪", 'EN': "Splattershot Jr.", 'JP': "わかばシューター"},
     3: {'CN': "窄域标记枪", 'EN': "Splash-o-matic", 'JP': "シャープマーカー"},
