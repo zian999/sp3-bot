@@ -233,5 +233,10 @@ sp3db = {
         "https://nga.178.com/read.php?tid=33460726",
         "喷喷喷打工模式不完全指北",
         "Splatoon 3 Salmon Run newbie guide"
-        ]
+        ],
+    14: [
+        "https://cdn.discordapp.com/attachments/1021937327347609602/1024367818797502574/3_.jpg",
+        "1.1.1 武器射程",
+        "Sp3 1.1.1 Main Weapon Range"
+        ],
 }
