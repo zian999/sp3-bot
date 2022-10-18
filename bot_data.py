@@ -239,4 +239,9 @@ sp3db = {
         "1.1.1 武器射程",
         "Sp3 1.1.1 Main Weapon Range"
         ],
+    15: [
+        "https://docs.google.com/document/d/10KXz0gD1Lo-7UkDyezSnyrm1vILn-fMSilwPE_kpOik/mobilebasic",
+        "Pro手柄漂移处理",
+        "Nintendo Switch Pro Controller Analog Stick PERMANENT FIX by ALL_C4P5"
+        ]
 }
