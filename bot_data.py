@@ -243,5 +243,10 @@ sp3db = {
         "https://docs.google.com/document/d/10KXz0gD1Lo-7UkDyezSnyrm1vILn-fMSilwPE_kpOik/mobilebasic",
         "Pro手柄漂移处理",
         "Nintendo Switch Pro Controller Analog Stick PERMANENT FIX by ALL_C4P5"
-        ]
+        ],
+    16: [
+        "https://discord.com/channels/1016107378309074985/1016112433200369664/1040265323682725948",
+        "喷3新amiibo数据",
+        "Dummy amiibo cards files for new splatoon3 amiibos"
+    ]
 }
