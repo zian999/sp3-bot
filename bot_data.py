@@ -4,6 +4,8 @@ stage_ids = {
     'ヤガラ市場': 3,
     'マテガイ放水路': 4,
     'ナメロウ金属': 6,
+    'クサヤ温泉': 7,
+    'ヒラメが丘団地': 9,
     'マサバ海峡大橋': 10,
     'キンメダイ美術館': 11,
     'マヒマヒリゾート＆スパ': 12,
@@ -13,7 +15,8 @@ stage_ids = {
     'スメーシーワールド': 16,
     'アラマキ砦': 902,
     'ムニ・エール海洋発電所': 907,
-    'シェケナダム': 901
+    'シェケナダム': 901,
+    '難破船ドン・ブラコ': 903
 }
 
 stage_names = {
@@ -22,6 +25,8 @@ stage_names = {
     3: {'CN': '烟管鱼市场', 'EN': 'Hagglefish Market', 'JP': 'ヤガラ市場'},
     4: {'CN': '竹蛏疏洪道', 'EN': 'Undertow Spillway', 'JP': 'マテガイ放水路'},
     6: {'CN': '鱼肉碎金属', 'EN': 'Mincemeat Metalworks', 'JP': 'ナメロウ金属'},
+    7: {'CN': '臭鱼干温泉', 'EN': 'Brinewater Springs', 'JP': 'クサヤ温泉'},
+    9: {'CN': '比目鱼住宅区', 'EN': 'Flounder Heights', 'JP': 'ヒラメが丘団地'},
     10: {'CN': '真鲭跨海大桥', 'EN': 'Hammerhead Bridge', 'JP': 'マサバ海峡大橋'},
     11: {'CN': '金眼鲷美术馆', 'EN': "Museum d'Alfonsino", 'JP': 'キンメダイ美術館'},
     12: {'CN': '鬼头刀SPA度假区', 'EN': 'Mahi-Mahi Resort', 'JP': 'マヒマヒリゾート＆スパ'},
@@ -31,7 +36,8 @@ stage_names = {
     16: {'CN': '醋饭海洋世界', 'EN': 'Wahoo World', 'JP': 'スメーシーワールド'},
     902: {'CN': '新卷堡', 'EN': 'Sockeye Station', 'JP': 'アラマキ砦'},
     907: {'CN': '麦年海洋发电所', 'EN': 'Gone Fission Hydroplant', 'JP': 'ムニ・エール海洋発電所'},
-    901: {'CN': '鲑坝', 'EN': 'Spawning Grounds', 'JP': 'シェケナダム'}
+    901: {'CN': '鲑坝', 'EN': 'Spawning Grounds', 'JP': 'シェケナダム'},
+    903: {'CN': '漂浮落难船', 'EN': "Marooner's Bay", 'JP': '難破船ドン・ブラコ'}
 }
 
 rule_ids = {
@@ -106,7 +112,20 @@ weapon_ids = {
     "トライストリンガー": 52,
     "LACT-450": 53,
     "ジムワイパー": 54,
-    "ドライブワイパー": 55
+    "ドライブワイパー": 55,
+    "スペースシューター": 56,
+    "ワイドローラー": 57,
+    "R-PEN/5H": 58,
+    "もみじシューター": 59,
+    "プロモデラーRG": 60,
+    "スプラシューターコラボ": 61,
+    "プライムシューターコラボ": 62,
+    "カーボンローラーデコ": 63,
+    "バケットスロッシャーデコ": 64,
+    "スプラスピナーコラボ": 65,
+    "スパッタリー・ヒュー": 66,
+    "ノヴァブラスターネオ": 67,
+    "パブロ・ヒュー": 68
 }
 
 weapon_names = {
@@ -165,7 +184,20 @@ weapon_names = {
     52: {'CN': "三发猎鱼弓", 'EN': "Tri-Stringer", 'JP': "トライストリンガー"},
     53: {'CN': "LACT-450", 'EN': "REEF-LUX 450", 'JP': "LACT-450"},
     54: {'CN': "工作刮水刀", 'EN': "Splatana Stamper", 'JP': "ジムワイパー"},
-    55: {'CN': "雨刷刮水刀", 'EN': "Splatana Wiper", 'JP': "ドライブワイパー"}
+    55: {'CN': "雨刷刮水刀", 'EN': "Splatana Wiper", 'JP': "ドライブワイパー"},
+    56: {'CN': "太空射击枪", 'EN': "Splattershot Nova", 'JP': "スペースシューター"},
+    57: {'CN': "宽滚筒", 'EN': "Big Swig Roller", 'JP': "ワイドローラー"},
+    58: {'CN': "R-PEN/5H", 'EN': "Snipewriter 5H", 'JP': "R-PEN/5H"},
+    59: {'CN': "枫叶射击枪", 'EN': "Custom Splattershot Jr.", 'JP': "もみじシューター"},
+    60: {'CN': "专业模型枪RG", 'EN': "Aerospray RG", 'JP': "プロモデラーRG"},
+    61: {'CN': "斯普拉射击枪 联名", 'EN': "Tentatek Splattershot", 'JP': "スプラシューターコラボ"},
+    62: {'CN': "顶尖射击枪 联名", 'EN': "Forge Splattershot Pro", 'JP': "プライムシューターコラボ"},
+    63: {'CN': "碳纤维滚筒 装饰", 'EN': "Carbon Roller Deco", 'JP': "カーボンローラーデコ"},
+    64: {'CN': "飞溅泼桶 装饰", 'EN': "Slosher Deco", 'JP': "バケットスロッシャーデコ"},
+    65: {'CN': "斯普拉旋转枪 联名", 'EN': "Zink Mini Splatling", 'JP': "スプラスピナーコラボ"},
+    66: {'CN': "溅镀枪·新艺术", 'EN': "Dapple Dualies Nouveau", 'JP': "スパッタリー・ヒュー"},
+    67: {'CN': "新星爆破枪 新型", 'EN': "Luna Blaster Neo", 'JP': "ノヴァブラスターネオ"},
+    68: {'CN': "巴勃罗・新艺术", 'EN': "Inkbrush Nouveau", 'JP': "パブロ・ヒュー"}
 }
 
 sp3db = {
