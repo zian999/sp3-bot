@@ -1,11 +1,10 @@
 from datetime import datetime
 import os
 from io import BytesIO
-from socket import getnameinfo
 import requests
 import discord
 from PIL import Image
-from bot_data import *
+from bot_data import stage_ids, stage_names, rule_ids, rule_names, weapon_ids, weapon_names, sp3db
 
 def user_agent():
     headers = {
